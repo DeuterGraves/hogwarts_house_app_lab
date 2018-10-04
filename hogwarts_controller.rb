@@ -10,3 +10,8 @@ get ('/hogwarts') do
   @students = Student.all()
   erb(:index)
 end
+
+# NEW
+get ("/hogwarts/new") do
+  erb(:new)
+end
