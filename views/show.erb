@@ -3,3 +3,9 @@
 <p>Name: <%= @student.f_name %> <%= @student.l_name %></p>
 <p>Age: <%= @student.age %></p>
 <p>House: <%= @student.house %></p>
+<form class="" action="/students/<%= @student.id %>/delete" method="post"><input type="submit" name="" value="Delete File"></form>
+
+<form class="" action="/students/<%= @student.id %>/edit" method="GET"><input type="submit" name="" value="Edit Details">
+
+
+</form>
