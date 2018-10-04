@@ -25,3 +25,8 @@ post ("/students") do
 end
 
 #SHOW
+get("/students/:id") do
+  id = params[:id].to_i()
+  @student = Student.find(id)
+  erb(:show)
+end

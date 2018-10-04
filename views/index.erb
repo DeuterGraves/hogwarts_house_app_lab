@@ -2,8 +2,7 @@
 <hr>
 <% for student in @students %>
 
-<p> First Name: <%= student.f_name %></p>
-<p> Last Name: <%= student.l_name %></p>
+<p> Name: <a href= "/students/<%= student.id %>"><%= student.f_name %> <%= student.l_name %></a></p>
 <p> Age: <%= student.age %></p>
 <p> House: <%= student.house %></p>
 <hr>
