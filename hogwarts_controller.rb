@@ -5,13 +5,23 @@ require_relative("./models/student.rb")
 also_reload("./models/*")
 
 
-# INDES
-get ('/hogwarts') do
+# INDEX
+get ('/students') do
   @students = Student.all()
   erb(:index)
 end
 
 # NEW
-get ("/hogwarts/new") do
+get ("/students/new") do
   erb(:new)
 end
+
+# CREATE
+post ("/students") do
+  @student = Student.new(params)
+  @student.save()
+  # have to redirect to the view to go back to 'index' - if you erb(:index), you'll get an error but the student is saved.
+  redirect to '/students'
+end
+
+#SHOW

@@ -1,6 +1,19 @@
-<form class="" action="/hogwarts" method="post">
+<h1>New Student Registration</h1>
+<hr>
+<form class="" action="/students" method="POST">
   <label for="f-name-field">First Name:</label>
   <input type="text" name="f_name" id="f-name-field">
-  
+  <label for="l-name-field">Last Name:</label>
+  <input type="text" name="l_name" id="l-name-field">
+  <label for="age-field">Age:</label>
+  <input type="number" name="age" value= 1 min= 1 id="age-field">
+  <label for="house-field">House:</label>
+  <select class="" name="house" id="house-select">
+    <option value="Gryffindor">Gryffindor</option>
+    <option value="Hufflepuff">Hufflepuff</option>
+    <option value="Ravenclaw">Ravenclaw</option>
+    <option value="Slytherin">Slytherin</option>
+  </select>
+  <input type="submit" name="" value="Save Student Details">
 
 </form>
