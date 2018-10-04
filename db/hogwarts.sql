@@ -6,4 +6,4 @@ CREATE TABLE students(
   l_name VARCHAR(255),
   house VARCHAR(255),
   age int4
-)
+);

@@ -1,6 +1,6 @@
 require_relative("../db/sql_runner.rb")
 
-class Students:
+class Student
 
 attr_reader :id
 attr_accessor :f_name, :l_name, :house, :age
@@ -35,7 +35,7 @@ attr_accessor :f_name, :l_name, :house, :age
 
   def delete()
     sql = "DELETE FROM students
-          WHERE id  = $1"
+          WHERE id  = $1;"
     values = [@id]
     SqlRunner.run(sql,values)
   end
@@ -49,10 +49,10 @@ attr_accessor :f_name, :l_name, :house, :age
           house,
           age)
           VALUES ($1, $2, $3, $4)
-          RETURNING id"
+          RETURNING id;"
 
-    values = [@f_name,@f_name, @house, @age]
-    result_hash = SqlRunner.run(sql,values)
+    values = [@f_name,@l_name, @house, @age]
+    result = SqlRunner.run(sql,values)
     #ok. here we go. get the only thing from the result
     result_hash = result[0]
     #now grab the data stored in 'id'
@@ -64,9 +64,8 @@ attr_accessor :f_name, :l_name, :house, :age
 
   def self.all()
     sql = "SELECT * FROM students;"
-    results = SqlRunner(sql)
+    results = SqlRunner.run(sql)
     Student.map_items(results)
-
   end
 
  def self.find(id)
@@ -81,17 +80,12 @@ attr_accessor :f_name, :l_name, :house, :age
 
  def update()
     sql = "UPDATE Students
-            SET (
-              f_name,
-              l_name,
-              house,
-              age
-              ) = (
-              $1, $2, $3, $4
-              )"
-    values = [@f_name, @l_name, @house, @age]
+            SET (f_name, l_name, house, age) =
+            ($1, $2, $3, $4)
+            WHERE id = $5;"
+    values = [@f_name, @l_name, @house, @age, @id]
     SqlRunner.run(sql,values)
   end
 
-   
+
 end
